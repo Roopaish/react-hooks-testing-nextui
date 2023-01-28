@@ -9,7 +9,7 @@ interface TopicCardProps {
 
 const TopicCard: FC<TopicCardProps> = ({ text, href }) => {
   return (
-    <Card css={{ h: "$24", $$cardColor: "$colors$primary" }}>
+    <Card css={{ h: "$24", $$cardColor: "$colors$secondary" }}>
       <Link to={href}>
         <Card.Body
           css={{

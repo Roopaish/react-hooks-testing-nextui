@@ -3,7 +3,6 @@ import { ThemeProvider } from "next-themes";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
-import Layout from "./components/Layout";
 import reportWebVitals from "./reportWebVitals";
 import router from "./utils/router";
 import { darkTheme, lightTheme } from "./utils/theme";
@@ -22,9 +21,7 @@ root.render(
       }}
     >
       <NextUIProvider>
-        <Layout>
-          <RouterProvider router={router} />
-        </Layout>
+        <RouterProvider router={router} />
       </NextUIProvider>
     </ThemeProvider>
   </React.StrictMode>
