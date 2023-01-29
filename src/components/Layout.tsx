@@ -32,7 +32,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
           <Grid.Container justify="space-between" alignItems="center">
             <Grid>
               <Link to="/">
-                <Text h2>React Hooks and Testing</Text>
+                <Text h3>React Hooks and Testing</Text>
               </Link>
             </Grid>
             <Grid>
