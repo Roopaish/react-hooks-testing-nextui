@@ -35,6 +35,7 @@ const CodeBlock: FC<CodeProps> = ({ code }) => {
         placeholder="Please enter JS code."
         padding={20}
         style={{
+          marginTop: 12,
           fontSize: "12px !important",
           fontFamily:
             "ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace",

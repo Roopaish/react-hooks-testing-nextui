@@ -1,12 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const useFetch = (url: string) => {
+  const isCurrent = useRef(true);
   const [state, setState] = useState<{ loading: boolean; data: string | null }>(
     {
       loading: true,
       data: null,
     }
   );
+
+  useEffect(() => {
+    return () => {
+      // cleanup function to set isCurrent to false when component is unmounted
+      isCurrent.current = false;
+    };
+  }, []);
 
   useEffect(() => {
     // use old data if it exists for smoother transition
@@ -18,6 +26,7 @@ const useFetch = (url: string) => {
     const fetchData = async () => {
       const res = await fetch(url);
       const data = await res.text();
+      if (!isCurrent.current) return; // if component is unmounted, don't update state (to avoid memory leak)
       setState({
         loading: false,
         data,
