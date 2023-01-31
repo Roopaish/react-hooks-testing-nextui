@@ -8,7 +8,6 @@ import {
 } from "@nextui-org/react";
 import { useTheme as useNextTheme } from "next-themes";
 import type { FC } from "react";
-import { Link } from "react-router-dom";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -31,9 +30,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         >
           <Grid.Container justify="space-between" alignItems="center">
             <Grid>
-              <Link to="/">
-                <Text h3>React Hooks and Testing</Text>
-              </Link>
+              <Text h3>React Hooks and Testing</Text>
             </Grid>
             <Grid>
               <Tooltip
@@ -57,7 +54,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         </Container>
       </header>
       <main>
-        <Container css={{ mt: 50 }}>{children}</Container>
+        <Container css={{ my: 50 }}>{children}</Container>
       </main>
     </>
   );

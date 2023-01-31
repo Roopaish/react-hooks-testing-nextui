@@ -1,7 +1,6 @@
 import { Button, Divider, Grid, Input, Spacer, Text } from "@nextui-org/react";
 import { useState } from "react";
 import CodeBlock from "../components/Code";
-import Layout from "../components/Layout";
 import useForm from "../utils/useForm";
 
 const UseStatePage = () => {
@@ -12,12 +11,17 @@ const UseStatePage = () => {
     password: "",
   });
 
+  const [users] = useState<any>(() => getUsers());
+  // Using () => getUsers() instead of just getUsers() will prevent the getUsers() function from being called on every render
+  // i.e. every time we increment the counter, getUsers() will not be called
+  // This is useful when we want to call an API only once on page load
+
   return (
-    <Layout>
+    <>
       <Text h2>Counter</Text>
       <Button.Group>
         <Button
-          onClick={() => setCount(count - 1)}
+          onPress={() => setCount(count - 1)}
           disabled={count === 1}
           name="decrement"
         >
@@ -26,7 +30,7 @@ const UseStatePage = () => {
         <Button css={{ background: "$secondary" }}>
           <Text h4>{count}</Text>
         </Button>
-        <Button onClick={() => setCount(count + 1)} name="increment">
+        <Button onPress={() => setCount(count + 1)} name="increment">
           Increment
         </Button>
       </Button.Group>
@@ -158,8 +162,42 @@ describe("Counter", () => {
           <Text h6>Password: {values.password}</Text>
         </Grid>
       </Grid.Container>
-    </Layout>
+
+      <Divider css={{ my: 30 }} />
+      <Text h2>Use State initializer function</Text>
+      <Spacer y={2} />
+      <CodeBlock
+        code={`
+  const [users] = useState<any>(() => getUsers());
+  // Using () => getUsers() instead of just getUsers() will prevent the getUsers() function from being called on every render
+  // i.e. every time we increment the counter, getUsers() will not be called
+  // This is useful when we want to call an API only once on page load
+      `}
+      />
+      <Grid.Container gap={2}>
+        {(users ?? []).map((user: any) => (
+          <Grid key={user.id}>
+            <Text h6>Name: {user.name}</Text>
+          </Grid>
+        ))}
+      </Grid.Container>
+    </>
   );
 };
 
 export default UseStatePage;
+
+const getUsers = () => {
+  console.log("Get Users");
+
+  return [
+    {
+      id: 1,
+      name: "Leanne Graham",
+    },
+    {
+      id: 2,
+      name: "Ervin Howell",
+    },
+  ];
+};

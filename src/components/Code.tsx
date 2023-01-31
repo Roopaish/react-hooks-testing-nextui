@@ -1,3 +1,4 @@
+import { useTheme } from "@nextui-org/react";
 import CodeEditor from "@uiw/react-textarea-code-editor";
 import { FC } from "react";
 
@@ -6,6 +7,7 @@ interface CodeProps {
 }
 
 const CodeBlock: FC<CodeProps> = ({ code }) => {
+  const { isDark } = useTheme();
   return (
     <div
       style={{
@@ -36,6 +38,7 @@ const CodeBlock: FC<CodeProps> = ({ code }) => {
           fontSize: "12px !important",
           fontFamily:
             "ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace",
+          background: isDark ? "#1e1e1e" : "#f5f5f5",
         }}
       />
     </div>

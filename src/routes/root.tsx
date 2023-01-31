@@ -1,6 +1,5 @@
 import { Container, Grid, useTheme } from "@nextui-org/react";
 import { useEffect } from "react";
-import Layout from "../components/Layout";
 import TopicCard from "../components/TopicCard";
 
 function Root() {
@@ -10,7 +9,7 @@ function Root() {
   }, []);
 
   return (
-    <Layout>
+    <>
       <Container
         css={{
           background: theme?.colors.background,
@@ -40,7 +39,7 @@ function Root() {
           </Grid>
         </Grid.Container>
       </Container>
-    </Layout>
+    </>
   );
 }
 
