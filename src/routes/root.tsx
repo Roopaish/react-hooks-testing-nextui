@@ -48,7 +48,21 @@ function Root() {
             <TopicCard
               text="useCallback"
               href="/use-callback"
-              imageSrc="https://miro.medium.com/max/568/1*3ZmHvv60o9xv-KAOuoJ4Hw.png"
+              imageSrc="https://miro.medium.com/max/1400/1*DVLc3hypQ3TaTxovc2VoWA.png"
+            />
+          </Grid>
+          <Grid xs={12} sm={6} md={4} lg={3}>
+            <TopicCard
+              text="useMemo"
+              href="/use-memo"
+              imageSrc="https://i.ytimg.com/vi/6-BfMpTT2PE/maxresdefault.jpg"
+            />
+          </Grid>
+          <Grid xs={12} sm={6} md={4} lg={3}>
+            <TopicCard
+              text="useReducer"
+              href="/use-reducer"
+              imageSrc="https://res.cloudinary.com/practicaldev/image/fetch/s--BJ8VQcnb--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/x3r9zgfgdq45dpw407ah.PNG"
             />
           </Grid>
         </Grid.Container>

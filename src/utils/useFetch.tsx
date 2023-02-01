@@ -2,12 +2,10 @@ import { useEffect, useRef, useState } from "react";
 
 const useFetch = (url: string) => {
   const isCurrent = useRef(true);
-  const [state, setState] = useState<{ loading: boolean; data: string | null }>(
-    {
-      loading: true,
-      data: null,
-    }
-  );
+  const [state, setState] = useState<{ loading: boolean; data: any | null }>({
+    loading: true,
+    data: null,
+  });
 
   useEffect(() => {
     return () => {
