@@ -37,6 +37,20 @@ function Root() {
               imageSrc="https://blog.logrocket.com/wp-content/uploads/2020/01/react-new-useref-instance.png"
             />
           </Grid>
+          <Grid xs={12} sm={6} md={4} lg={3}>
+            <TopicCard
+              text="useLayoutEffect"
+              href="/use-layout-effect"
+              imageSrc="https://blog.commoninja.com/wp-content/uploads/2022/12/TgixJS5s.png"
+            />
+          </Grid>
+          <Grid xs={12} sm={6} md={4} lg={3}>
+            <TopicCard
+              text="useCallback"
+              href="/use-callback"
+              imageSrc="https://miro.medium.com/max/568/1*3ZmHvv60o9xv-KAOuoJ4Hw.png"
+            />
+          </Grid>
         </Grid.Container>
       </Container>
     </>
