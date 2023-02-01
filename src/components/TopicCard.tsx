@@ -14,7 +14,7 @@ const TopicCard: FC<TopicCardProps> = ({ text, href, imageSrc }) => {
       css={{
         h: "200px",
         $$cardColor: "$colors$secondary",
-        background: `url(${imageSrc}), $colors$secondary`,
+        background: `url(${imageSrc}), transparent`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         boxShadow: "inset 0 0 0 1000px rgba(0,0,0,.5)",

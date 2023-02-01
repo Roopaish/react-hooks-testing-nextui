@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "../routes/root";
 import UseCallbackPage from "../routes/use-callback";
+import UseContextPage from "../routes/use-context";
 import UseEffectPage from "../routes/use-effect";
 import UseLayoutEffectPage from "../routes/use-layout-effect";
 import UseMemoPage from "../routes/use-memo";
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "/use-reducer",
     element: <UseReducerPage />,
+  },
+  {
+    path: "/use-context",
+    element: <UseContextPage />,
   },
 ]);
 

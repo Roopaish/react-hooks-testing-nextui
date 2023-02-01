@@ -39,7 +39,7 @@ const CodeBlock: FC<CodeProps> = ({ code }) => {
           fontSize: "12px !important",
           fontFamily:
             "ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace",
-          background: isDark ? "#1e1e1e" : "#f5f5f5",
+          background: isDark ? "#16181a" : "#f5f5f5",
         }}
       />
     </div>

@@ -65,6 +65,13 @@ function Root() {
               imageSrc="https://res.cloudinary.com/practicaldev/image/fetch/s--BJ8VQcnb--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/x3r9zgfgdq45dpw407ah.PNG"
             />
           </Grid>
+          <Grid xs={12} sm={6} md={4} lg={3}>
+            <TopicCard
+              text="useContext"
+              href="/use-context"
+              imageSrc="https://dmitripavlutin.com/90649ae4bdf379c482ad24e0dd220bc4/react-context-3.svg"
+            />
+          </Grid>
         </Grid.Container>
       </Container>
     </>

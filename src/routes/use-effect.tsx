@@ -8,6 +8,7 @@ import {
   Text,
 } from "@nextui-org/react";
 import { useEffect, useState } from "react";
+import CodeBlock from "../components/Code";
 import useFetch from "../utils/useFetch";
 
 const UseEffectPage = () => {
@@ -40,12 +41,71 @@ const UseEffectPage = () => {
         <Grid>{display && <HelloWorld />}</Grid>
       </Grid.Container>
 
+      <CodeBlock
+        code={`
+const ComponentMount = () => {
+  const [display, setDisplay] = useState(true);
+  
+  return (
+    <>
+      <Button onPress={() => setDisplay((display) => !display)}>
+        Toggle display
+      </Button>
+      {display && <HelloWorld />}
+    </>
+  );
+}
+
+const HelloWorld = () => {
+  const [text, setText] = useState("");
+
+  useEffect(() => {
+    console.log("1. Component mounted");
+    return () => console.log("1. Component unmounted");
+  }, []);
+
+  useEffect(() => {
+    console.log("2. New value added");
+
+    return () => console.log("2. Old value cleaned up");
+  }, [text]);
+
+  return (
+    <Card isHoverable variant="bordered" css={{ mw: "max-content" }}>
+      <Card.Body>
+        <Input
+          placeholder="Name"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          label="Name"
+        />
+      </Card.Body>
+    </Card>
+  );
+};
+
+      `}
+      />
+
       <Divider css={{ my: 40 }} />
 
       <Text h2>Mouse position</Text>
       <Text>
         X: {cursorPosition.x} Y: {cursorPosition.y}
       </Text>
+      <CodeBlock
+        code={`
+useEffect(() => {
+  const onMouseMove = (e: MouseEvent) => {
+    setCursorPosition({ x: e.clientX, y: e.clientY });
+  };
+
+  window.addEventListener("mousemove", onMouseMove);
+
+  return () => window.removeEventListener("mousemove", onMouseMove);
+}, []);
+      `}
+      />
 
       <Divider css={{ my: 40 }} />
 
@@ -79,6 +139,51 @@ const UseEffectPage = () => {
           data
         )}
       </Text>
+      <CodeBlock
+        code={`
+import { useEffect, useRef, useState } from "react";
+
+const useFetch = (url: string) => {
+  const isCurrent = useRef(true);
+  const [state, setState] = useState<{ loading: boolean; data: any | null }>({
+    loading: true,
+    data: null,
+  });
+
+  useEffect(() => {
+    return () => {
+      // cleanup function to set isCurrent to false when component is unmounted
+      isCurrent.current = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    // use old data if it exists for smoother transition
+    setState((state) => ({
+      loading: state.loading,
+      data: state.data,
+    }));
+
+    const fetchData = async () => {
+      const res = await fetch(url);
+      const data = await res.text();
+      if (!isCurrent.current) return; // if component is unmounted, don't update state (to avoid memory leak)
+      setState({
+        loading: false,
+        data,
+      });
+    };
+
+    fetchData();
+  }, [url]);
+
+  return state;
+};
+
+export default useFetch;
+
+      `}
+      />
     </>
   );
 };

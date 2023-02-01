@@ -1,5 +1,6 @@
 import { Divider, Input, Text } from "@nextui-org/react";
 import { useLayoutEffect, useRef, useState } from "react";
+import CodeBlock from "../components/Code";
 
 const UseLayoutEffectPage = () => {
   const [text, setText] = useState("");
@@ -42,6 +43,16 @@ const UseLayoutEffectPage = () => {
       <Text h6>
         <pre>{JSON.stringify(data, null, 2)}</pre>
       </Text>
+      <CodeBlock
+        code={`
+const [data, setData] = useState<any>(null);
+const ref = useRef<HTMLElement>(null);
+
+useLayoutEffect(() => {
+  setData(ref.current?.getBoundingClientRect());
+}, [text]);
+      `}
+      />
     </>
   );
 };
